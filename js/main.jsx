@@ -6,17 +6,17 @@ import { Router, Route, browserHistory, Redirect } from 'react-router';
 
 //Components
 
-import Welcome      from './components/welcome.jsx';
-import Questions    from './components/questions.jsx';
+import API           from './components/apiendpoint.jsx';
+import RepoTree      from './components/repotree.jsx';
+import NotFound      from './components/404.jsx';
 
 var GitHubTree = React.createClass({
 
   render: function() {
     return (
       <Router history={browserHistory}>
-        <Redirect from='/' to='/welcome' />
-        <Route path='/welcome' component={Welcome} />
-        <Route path='/questions' component={Questions} />
+        <Redirect from='/' to='/repotree' />
+        <Route path='/repotree' component={RepoTree} />
         <Route path='*' component={NotFound} />
       </Router>
     )
