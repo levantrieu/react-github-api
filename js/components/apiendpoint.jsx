@@ -3,20 +3,42 @@
 var React = require('react');
 var ReactAPI = require('../../node_modules/react-api/build/react-api.js');
 
-// The address of where to retrieve data
-var URL = 'https://api.github.com/repos/levantrieu/react-github-api';
 
 var API = React.createClass ({
 
-  handleResponse: function(){
-    // API response as a JavaScript object:
-    console.log(this.refs.github.state.data);
+  getInitialState: function() {
+    return {
+      username: '',
+      lastGistUrl: ''
+    };
   },
 
-  render() {
+  // handleResponse: function(){
+  //   // API response as a JavaScript object:
+  //   console.log(this.refs.github.state.data);
+  // },
+
+  componentWillMount: function() {
+    this.serverRequest = $.get(this.props.source, function (result) {
+      var lastGist = result[0];
+      this.setState({
+        username: lastGist.owner.login,
+        lastGistUrl: lastGist.html_url
+      });
+    }.bind(this));
+  },
+
+  componentWillUnmount: function() {
+    this.serverRequest.abort();
+  },
+
+  render: function() {
     return (
-      ""
-    )
+      <div>
+        hello world api
+        {this.state.username}'s last gist is <a href={this.state.lastGistUrl}>here</a>.
+      </div>
+    );
   }
 });
 
