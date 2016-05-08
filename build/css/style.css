@@ -57,11 +57,10 @@ body {
 
 .wrapper {
   width: 500px;
-  margin: 0 auto;
+  margin: 3rem auto;
   font-family: 'Orbitron', sans-serif;
   font-size: 1rem;
-  color: #fff;
-  margin-top: 2rem; }
+  color: #fff; }
 
 h1 {
   font-size: 1.22rem;

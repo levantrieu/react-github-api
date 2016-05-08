@@ -23,7 +23,7 @@ var API = React.createClass ({
   },
 
   render: function() {
-    var projectFiles = this.state.repo || [];
+    var projectFiles = this.state.repo;
     return (
       <div>
         {projectFiles.map(function(result, i){
