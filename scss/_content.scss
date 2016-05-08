@@ -1,0 +1,35 @@
+body {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,
+              rgba(0,0,0,0.5) 100% ),
+              url(../../images/trump-moon.png);
+  background-size: cover;
+}
+
+.wrapper {
+  width: 500px;
+  margin: 0 auto;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 2rem;
+}
+
+h1 {
+  font-size: 1.22rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  padding: 1.25rem 0 1rem;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+ul {
+  list-style: square;
+  margin-left: 1rem;
+}
+
+li {
+  margin-bottom: 0.75rem;
+}

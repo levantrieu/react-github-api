@@ -1,40 +1,38 @@
 'use strict'
 
 var React = require('react');
-// var ReactAPI = require('../../node_modules/react-api/build/react-api.js');
-
 
 var API = React.createClass ({
 
   getInitialState: function() {
     return {
-      tree: '',
-      blob: ''
+      repo: []
     };
   },
 
-  componentWillMount: function() {
-    this.serverRequest = $.get(this.props.source, function (result) {
+  componentDidMount: function() {
+    var self = this;
+    $.get(this.props.source, function(result) {
       var files = result.tree;
-      this.setState({
-        tree: files.type,
-        blob: files.type
-      });
+      if (this.isMounted()) {
+        this.setState({
+          repo: files
+        });
+      }
     }.bind(this));
   },
 
-  componentWillUnmount: function() {
-    this.serverRequest.abort();
-  },
-
   render: function() {
+    var projectFiles = this.state.repo || [];
     return (
       <div>
-        hello world api
-        <ul>
-          {this.state.tree}
-          <li>{this.state.blob}</li>
-        </ul>
+        {projectFiles.map(function(result, i){
+          return (
+            <ul key={result + i}>
+              <li>{result.path}</li>
+            </ul>
+          )
+        })}
       </div>
     );
   }
