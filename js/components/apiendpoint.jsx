@@ -1,29 +1,24 @@
 'use strict'
 
 var React = require('react');
-var ReactAPI = require('../../node_modules/react-api/build/react-api.js');
+// var ReactAPI = require('../../node_modules/react-api/build/react-api.js');
 
 
 var API = React.createClass ({
 
   getInitialState: function() {
     return {
-      username: '',
-      lastGistUrl: ''
+      tree: '',
+      blob: ''
     };
   },
 
-  // handleResponse: function(){
-  //   // API response as a JavaScript object:
-  //   console.log(this.refs.github.state.data);
-  // },
-
   componentWillMount: function() {
     this.serverRequest = $.get(this.props.source, function (result) {
-      var lastGist = result[0];
+      var files = result.tree;
       this.setState({
-        username: lastGist.owner.login,
-        lastGistUrl: lastGist.html_url
+        tree: files.type,
+        blob: files.type
       });
     }.bind(this));
   },
@@ -36,7 +31,10 @@ var API = React.createClass ({
     return (
       <div>
         hello world api
-        {this.state.username}'s last gist is <a href={this.state.lastGistUrl}>here</a>.
+        <ul>
+          {this.state.tree}
+          <li>{this.state.blob}</li>
+        </ul>
       </div>
     );
   }

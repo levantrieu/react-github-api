@@ -1,18 +1,17 @@
 'use strict'
 
 var React = require('react');
-var ReactAPI = require('../../node_modules/react-api/build/react-api.js');
+// var ReactAPI = require('../../node_modules/react-api/build/react-api.js');
 
 import API from './apiendpoint.jsx';
 
 var RepoTree = React.createClass({
 
-
   render: function() {
     return (
       <div>
         hello world
-        <API source='https://api.github.com/users/octocat/gists' />
+        <API source='https://api.github.com/repos/levantrieu/react-github-api/git/trees/master?recursive=1' />
       </div>
     );
   }
